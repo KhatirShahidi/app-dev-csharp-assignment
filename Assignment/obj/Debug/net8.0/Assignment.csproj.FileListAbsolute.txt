@@ -1,0 +1,14 @@
+D:\Documents\GitHub\app-dev-csharp-assignment\Assignment\bin\Debug\net8.0\Assignment.exe
+D:\Documents\GitHub\app-dev-csharp-assignment\Assignment\bin\Debug\net8.0\Assignment.deps.json
+D:\Documents\GitHub\app-dev-csharp-assignment\Assignment\bin\Debug\net8.0\Assignment.runtimeconfig.json
+D:\Documents\GitHub\app-dev-csharp-assignment\Assignment\bin\Debug\net8.0\Assignment.dll
+D:\Documents\GitHub\app-dev-csharp-assignment\Assignment\bin\Debug\net8.0\Assignment.pdb
+D:\Documents\GitHub\app-dev-csharp-assignment\Assignment\obj\Debug\net8.0\Assignment.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\GitHub\app-dev-csharp-assignment\Assignment\obj\Debug\net8.0\Assignment.AssemblyInfoInputs.cache
+D:\Documents\GitHub\app-dev-csharp-assignment\Assignment\obj\Debug\net8.0\Assignment.AssemblyInfo.cs
+D:\Documents\GitHub\app-dev-csharp-assignment\Assignment\obj\Debug\net8.0\Assignment.csproj.CoreCompileInputs.cache
+D:\Documents\GitHub\app-dev-csharp-assignment\Assignment\obj\Debug\net8.0\Assignment.dll
+D:\Documents\GitHub\app-dev-csharp-assignment\Assignment\obj\Debug\net8.0\refint\Assignment.dll
+D:\Documents\GitHub\app-dev-csharp-assignment\Assignment\obj\Debug\net8.0\Assignment.pdb
+D:\Documents\GitHub\app-dev-csharp-assignment\Assignment\obj\Debug\net8.0\Assignment.genruntimeconfig.cache
+D:\Documents\GitHub\app-dev-csharp-assignment\Assignment\obj\Debug\net8.0\ref\Assignment.dll
