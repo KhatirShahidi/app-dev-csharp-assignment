@@ -1,0 +1,15 @@
+D:\Documents\GitHub\app-dev-csharp-assignment\Student Management System\obj\Debug\net8.0\Student Management System.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\GitHub\app-dev-csharp-assignment\Student Management System\obj\Debug\net8.0\Student Management System.AssemblyInfoInputs.cache
+D:\Documents\GitHub\app-dev-csharp-assignment\Student Management System\obj\Debug\net8.0\Student Management System.AssemblyInfo.cs
+D:\Documents\GitHub\app-dev-csharp-assignment\Student Management System\obj\Debug\net8.0\Student Management System.csproj.CoreCompileInputs.cache
+D:\Documents\GitHub\app-dev-csharp-assignment\Student Management System\obj\Debug\net8.0\Student Management System.sourcelink.json
+D:\Documents\GitHub\app-dev-csharp-assignment\Student Management System\bin\Debug\net8.0\Student Management System.exe
+D:\Documents\GitHub\app-dev-csharp-assignment\Student Management System\bin\Debug\net8.0\Student Management System.deps.json
+D:\Documents\GitHub\app-dev-csharp-assignment\Student Management System\bin\Debug\net8.0\Student Management System.runtimeconfig.json
+D:\Documents\GitHub\app-dev-csharp-assignment\Student Management System\bin\Debug\net8.0\Student Management System.dll
+D:\Documents\GitHub\app-dev-csharp-assignment\Student Management System\bin\Debug\net8.0\Student Management System.pdb
+D:\Documents\GitHub\app-dev-csharp-assignment\Student Management System\obj\Debug\net8.0\Student Management System.dll
+D:\Documents\GitHub\app-dev-csharp-assignment\Student Management System\obj\Debug\net8.0\refint\Student Management System.dll
+D:\Documents\GitHub\app-dev-csharp-assignment\Student Management System\obj\Debug\net8.0\Student Management System.pdb
+D:\Documents\GitHub\app-dev-csharp-assignment\Student Management System\obj\Debug\net8.0\Student Management System.genruntimeconfig.cache
+D:\Documents\GitHub\app-dev-csharp-assignment\Student Management System\obj\Debug\net8.0\ref\Student Management System.dll
