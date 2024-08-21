@@ -5,7 +5,7 @@ namespace StudentManagementSystem
     class Student
     {
         public int ID { get; set; }
-        public required string Name { get; set; }
+        public string Name { get; set; }
         public int Age { get; set; }
         public int Grade { get; set; }
 
@@ -16,33 +16,36 @@ namespace StudentManagementSystem
 
         public string IsPassing()
         {
-            if (Grade >= 60)
-            {
-                return "Passing";
-            }
-            else
-            {
-                return "Failing";
-            }
+            return Grade >= 60 ? "Passing" : "Failing";
         }
 
-        public string CapitalizeWords()
+    
+
+        public static string CapitalizeWords(string input)
         {
-            string[] words = Name.Split(' ');
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return input;
+            }
+
+            string[] words = input.Split(' ');
             for (int i = 0; i < words.Length; i++)
             {
-                words[i] = words[i].Substring(0, 1).ToUpper() + words[i].Substring(1).ToLower();
+                if (words[i].Length > 0)
+                {
+                    words[i] = words[i].Substring(0, 1).ToUpper() + words[i].Substring(1).ToLower();
+                }
             }
             return string.Join(" ", words);
         }
     }
 
+
     class Program
     {
         static void Main(string[] args)
         {
-            Student[] students = new Student[50];
-            int studentCount = 0;
+            List<Student> students = new List<Student>();
 
             while (true)
             {
@@ -55,30 +58,28 @@ namespace StudentManagementSystem
                 switch (choice)
                 {
                     case 1:
-                        AddStudent(students, studentCount);
-                        studentCount++;
+                        AddStudent(students);
                         break;
                     case 2:
-                        DisplayAllStudents(students, studentCount);
+                        DisplayAllStudents(students);
                         break;
                     case 3:
-                        SearchStudent(students, studentCount);
+                        SearchStudent(students);
                         break;
                     case 4:
-                        RemoveStudent(students, studentCount);
-                        studentCount--;
+                        RemoveStudent(students);
                         break;
                     case 5:
-                        UpdateStudentGrade(students, studentCount);
+                        UpdateStudentGrade(students);
                         break;
                     case 6:
-                        SortStudentsByGrade(students, studentCount);
+                        SortStudentsByGrade(students);
                         break;
                     case 7:
-                        DisplayAverageGrade(students, studentCount);
+                        DisplayAverageGrade(students);
                         break;
                     case 8:
-                        CountPassingStudents(students, studentCount);
+                        CountPassingStudents(students);
                         break;
                     case 9:
                         Console.WriteLine("Goodbye!");
@@ -103,129 +104,99 @@ namespace StudentManagementSystem
             Console.WriteLine("9. Exit");
         }
 
-        static void AddStudent(Student[] students, int studentCount)
+        static void AddStudent(List<Student> students)
         {
             Console.Write("Enter Student ID: ");
             int id = int.Parse(Console.ReadLine());
             Console.Write("Enter Student Name: ");
-            string name = Console.ReadLine();
+            string name = Student.CapitalizeWords(Console.ReadLine());
             Console.Write("Enter Student Age: ");
             int age = int.Parse(Console.ReadLine());
             Console.Write("Enter Student Grade: ");
             int grade = int.Parse(Console.ReadLine());
-            students[studentCount] = new Student { ID = id, Name = name, Age = age, Grade = grade };
-            studentCount++;
-            Console.WriteLine("Student added successfully!");
+            students.Add(new Student { ID = id, Name = name, Age = age, Grade = grade });
         }
 
-        static void SearchStudent(Student[] students, int studentCount)
+
+
+        static void SearchStudent(List<Student> students)
         {
             Console.Write("Enter Student ID to search: ");
             int searchId = int.Parse(Console.ReadLine());
-            bool found = false;
-            for (int i = 0; i < studentCount; i++)
+            var student = students.Find(s => s.ID == searchId);
+
+            if (student != null)
             {
-                if (students[i].ID == searchId)
-                {
-                    students[i].DisplayDetails();
-                    found = true;
-                    break;
-                }
+                student.DisplayDetails();
             }
-            if (!found)
+            else
             {
                 Console.WriteLine("Student not found!");
             }
         }
 
-        static void RemoveStudent(Student[] students, int studentCount)
+        static void RemoveStudent(List<Student> students)
         {
             Console.Write("Enter Student ID to remove: ");
             int removeId = int.Parse(Console.ReadLine());
-            for (int i = 0; i < studentCount; i++)
+            var student = students.Find(s => s.ID == removeId);
+
+            if (student != null)
             {
-                if (students[i].ID == removeId)
-                {
-                    for (int j = i; j < studentCount - 1; j++)
-                    {
-                        students[j] = students[j + 1];
-                    }
-                    studentCount--;
-                    Console.WriteLine("Student removed successfully!");
-                    break;
-                }
+                students.Remove(student);
+                Console.WriteLine("Student removed successfully!");
+            }
+            else
+            {
+                Console.WriteLine("Student not found!");
             }
         }
 
-        static void UpdateStudentGrade(Student[] students, int studentCount)
+        static void UpdateStudentGrade(List<Student> students)
         {
             Console.Write("Enter Student ID to update: ");
             int updateId = int.Parse(Console.ReadLine());
-            for (int i = 0; i < studentCount; i++)
+            var student = students.Find(s => s.ID == updateId);
+
+            if (student != null)
             {
-                if (students[i].ID == updateId)
-                {
-                    Console.Write("Enter new grade: ");
-                    int newGrade = int.Parse(Console.ReadLine());
-                    students[i].Grade = newGrade;
-                    Console.WriteLine("Grade updated successfully!");
-                    break;
-                }
+                Console.Write("Enter new grade: ");
+                int newGrade = int.Parse(Console.ReadLine());
+                student.Grade = newGrade;
+                Console.WriteLine("Grade updated successfully!");
+            }
+            else
+            {
+                Console.WriteLine("Student not found!");
             }
         }
 
-        static void SortStudentsByGrade(Student[] students, int studentCount)
+        static void SortStudentsByGrade(List<Student> students)
         {
-            for (int i = 0; i < studentCount - 1; i++)
-            {
-                for (int j = 0; j < studentCount - i - 1; j++)
-                {
-                    if (students[j].Grade > students[j + 1].Grade)
-                    {
-                        Student temp = students[j];
-                        students[j] = students[j + 1];
-                        students[j + 1] = temp;
-                    }
-                }
-            }
+            students.Sort((s1, s2) => s1.Grade.CompareTo(s2.Grade));
         }
 
-        static void DisplayAverageGrade(Student[] students, int studentCount)
+        static void DisplayAverageGrade(List<Student> students)
         {
             int totalGrade = 0;
-            for (int i = 0; i < studentCount; i++)
+            foreach (var student in students)
             {
-                totalGrade += students[i].Grade;
+                totalGrade += student.Grade;
             }
-            Console.WriteLine("Average grade: " + totalGrade / studentCount);
+            Console.WriteLine("Average grade: " + (students.Count > 0 ? totalGrade / students.Count : 0));
         }
 
-        static void CountPassingStudents(Student[] students, int studentCount)
+        static void CountPassingStudents(List<Student> students)
         {
-            int passingCount = 0;
-            for (int i = 0; i < studentCount; i++)
-            {
-                if (students[i].Grade >= 60)
-                {
-                    passingCount++;
-                }
-            }
+            int passingCount = students.Count(s => s.Grade >= 60);
             Console.WriteLine("Number of passing students: " + passingCount);
         }
 
-        static void DisplayAllStudents(Student[] students, int studentCount)
+        static void DisplayAllStudents(List<Student> students)
         {
-            for (int i = 0; i < studentCount; i++)
+            foreach (var student in students)
             {
-                students[i].DisplayDetails();
-            }
-        }
-
-        static void DisplayDetails(Student[] students, int studentCount)
-        {
-            for (int i = 0; i < studentCount; i++)
-            {
-                students[i].DisplayDetails();
+                student.DisplayDetails();
             }
         }
     }
